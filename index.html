@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .multiply-divide {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .buttons {
+        display: flex;
+        margin-top: 20px;
+        width: 155px;
+        /* border: 1px solid red; */
+        justify-content: space-between;
+      }
+      #first-number {
+        margin-left: 20px;
+      }
+      #second-number {
+        margin-left: 14px;
+      }
+      input[type="number"]::-webkit-outer-spin-button,
+      input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- For Basic - 2: Print The current window -->
+    <h1>Hello world</h1>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam error
+      commodi iste corrupti dolore expedita eligendi dicta excepturi ratione
+      beatae libero magnam atque ipsa, deserunt doloremque harum vitae placeat
+      animi qui eaque, minus hic. Libero voluptate esse modi tempora
+      voluptatibus quos exercitationem autem debitis, nam, velit temporibus
+      molestias ipsa rem officia, sapiente eligendi nihil doloremque sint ex?
+      Nulla suscipit nisi voluptatum. Placeat alias animi velit atque dolore
+      iure ut expedita optio quisquam repudiandae! Ea in possimus consequuntur
+      corporis, velit a illo aspernatur mollitia aliquam placeat accusantium
+      iusto harum error optio ab beatae maiores consectetur voluptas odio
+      nesciunt! Quidem, rerum reiciendis!
+    </p>
+    <button class="to-print">Print Me!</button>
+    <br />
+    <br />
+    <h3>Multiply-Divide</h3>
+    <section class="multiply-divide-form">
+      <div class="multiply-divide">
+        <div class="first-Number">
+          <label for="first-number">1st Number: </label>
+          <input
+            type="number"
+            id="first-number"
+            name="first-number"
+            placeholder="First number here"
+            step="any"
+          />
+        </div>
+
+        <div class="second-Number">
+          <label for="second-number">2nd Number: </label>
+          <input
+            type="number"
+            id="second-number"
+            name="second-number"
+            placeholder="Second number here"
+          />
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="multiply">Multiply</button>
+        <button class="divide">Divide</button>
+      </div>
+      <br />
+      <br />
+      <div class="hidden">
+        <h3>The Result is :</h3>
+        <h4 class="result"></h4>
+      </div>
+    </section>
+    <script src="playingAroundWithThis.js"></script>
+  </body>
+</html>
