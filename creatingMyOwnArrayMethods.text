@@ -1,0 +1,35 @@
+// Why I cant do this :":"
+// Array.prototype = {
+//   myFunckyFunction() {
+// console.log(`Hello`);
+//   },
+// };
+//
+// arra.myFunckyFunction();
+// you're telling JavaScript:
+// "Throw away the original Array.prototype object and use this new object instead."
+// The problem is that existing arrays were already created with the original Array.prototype. They still point to that old prototype object.
+
+
+Making it chainable
+Function chaining works when your method returns an object that has another method to call.
+Usually, if you want to continue working with the same array, return this.
+
+// pop removes and reuturns the removed element
+// psuh adds the element to the last index and returns the length which becomes a string
+
+
+arr
+  ↓
+Array.prototype   ← finds myMethod here
+  ↓
+Object.prototype
+  ↓
+null
+
+One important note
+
+While adding methods to Array.prototype is great for learning, it's generally not recommended in production code because it modifies a built-in global object. It can cause conflicts with other libraries or future JavaScript features. In production, it's usually better to write standalone utility functions or create your own class that extends Array if you need custom behavior.
+
+You're asking about one of the core ideas behind JavaScript's object system. Understanding prototypes and this is what allows built-in methods like map(), filter(), push(), and pop() to work the way they do.
+
