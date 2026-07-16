@@ -153,3 +153,63 @@ tamim.play();
 
 //Prototype hocche function er builtin property jeita Js amaderk dei
 //and oitar moddhe ja share kore proyojon jeita commoin sheita amra rekhe dite pari
+
+function PersonWithNew(name, age) {
+  // let person = Object.create(Person.prototype);
+  this.name = name;
+  this.age = age;
+  this.vatij = "vatijar Naam";
+
+  // return person;
+}
+// console.log(`hi`);
+console.log("");
+console.log("");
+
+PersonWithNew.prototype = {
+  eat() {
+    console.log(`${this.name} is eating rice`);
+    // console.log(this); //** This is a very important line   */
+    // console.log(hi);
+  },
+  sleep() {
+    console.log("Person is sleeping");
+  },
+  play() {
+    console.log(`Person is playing bullshit`);
+  },
+};
+
+const sakib1 = new PersonWithNew("Sakib", 36);
+const tamim2 = new PersonWithNew("Tamim", 36);
+sakib1.eat();
+
+console.log("");
+console.log("");
+
+class PersonCreatedWithClass {
+  constructor(name, age) {
+    ((this.name = name), (this.age = age));
+  }
+  eat() {
+    console.log(`${this.name} is eating rice`);
+  }
+
+  sleep() {
+    console.log(`${this.name} who is ${this.age} years old is sleeping`);
+  }
+
+  play() {
+    console.log(`${this.name}, o lila khela kortese`);
+  }
+}
+
+const sakibWithClass = new PersonCreatedWithClass("sakib", 35);
+const tamimWithClass = new PersonCreatedWithClass("tamim", 27);
+
+sakibWithClass.eat();
+tamimWithClass.sleep();
+
+let peoplePersons = new Array();
+
+console.log(Array.prototype);
