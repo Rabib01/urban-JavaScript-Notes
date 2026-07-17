@@ -56,3 +56,6 @@ console.log(breadIndex);
 statusChangerUsingFindIndex(groceryItems, breadIndex);
 // statusChanger(groceryItems);
 // console.log(itemRemoverFromGroceryList(groceryItems, breadIndex));
+
+// index dhore dhore splice diye element gula remove kora jai
+// or you could create a new array and remove with a condition by using filter
