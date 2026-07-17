@@ -33,3 +33,4 @@ While adding methods to Array.prototype is great for learning, it's generally no
 
 You're asking about one of the core ideas behind JavaScript's object system. Understanding prototypes and this is what allows built-in methods like map(), filter(), push(), and pop() to work the way they do.
 
+`
