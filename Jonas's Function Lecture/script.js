@@ -92,7 +92,13 @@ flightChecker(flight, passenger);
   transformer(sentence, upperFirstLetterOfEachWord);
   transformer(sentence, oneWord);
 
-  //different ways of usi
+  //different ways of using callbacks
+
+  const high5 = function () {
+    console.log("hi five");
+  };
+
+  document.body.addEventListener("click", high5);
 };
 init();
 /**
