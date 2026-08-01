@@ -248,6 +248,20 @@ add(7)(9)(3);
   const addTaxRate = (value) => (rate) => value + value * rate;
   console.log(addTaxRate(200)(0.2));
 
+  //' IIFE
+  (function () {
+    console.log("This function will execute only once");
+  })();
+
+  (() => console.log("This function will also execute only once"))();
+
+  {
+    let isPrivate = 23;
+    var isnotPrivate = 24;
+  }
+  console.log(isPrivate);
+  console.log(isnotPrivate);
+
   // Do not go beyond this line
 };
 
@@ -326,5 +340,29 @@ init();
 //  * arrow functions are always functop0nm expression and cannot be function declerations
  * 
  * IIFE : Immediately invoked function expression 
+ * A function that dissapears right after it has executed once. This is useful in async await
+ * write the function expression without assigning it to any variables 
+ * this is a function statement - Wrap it in a parenthesis and make it an expression from statement
+ *  
+  (function () {
+      console.log("This function will execute only once");
+    }) -> this is the function value 
+ * () This is the function call 
+ *    
+  (function () {
+      console.log("This function will execute only once");
+  })() This is the entire thing   
  * 
+ * Why was IIFE creasted 
+ * Funciton create scopes, one function does not have access to variables from an inner scope, 
+ * Therefore we say that all of the data defined inside a scope is private 
+ * This data is encapsulated 
+ * to protect them from accidentally being overwritten 
+ * this pattern was invented -> Was not a JS feature 
+ * varaibles declared with let or const create their own scope inside their block 
+ * 
+ * This is why if we needed data privacy we can just create a blocked scope instead of creating a function to create a scope 
+ * But if you need to execute a function only once then IIFE is still the way to go ven with modern JS 
+ * 
+ *  
  */
