@@ -175,10 +175,86 @@ add(7)(9)(3);
   book.call(airline, 23, "Sarah Williams");
   book.call(airline2, 23, "Shirin Akter");
 
+  // Apply method :
+  // does the same shit as call, but it takes in an array as argument, instead of individual arguemtn
+  const airline3 = {
+    name: "Swiss Airline",
+    iataCode: "SA",
+    bookings: [],
+  };
+
+  const flightData = [34, "George Cooper"];
+  // book.apply(airline3, flightData);
+  // console.log(airline3);
+
+  // but the modern way of doing this is to use the spread operator instead of using a diffrent methof
+  book.call(airline3, ...flightData);
+
+  // BInd methid
+  const bookLH = book.bind(airline);
+  const bookEW = book.bind(airline2);
+  const bookSA = book.bind(airline3);
+  bookEW(23, "Steven Williams");
+
+  // Applying Book.BInd with partial applications
+  const bookEW29 = book.bind(airline3, 29);
+  bookEW29("Muhtasim Rabib");
+  bookEW29("TF Rayen");
   // Do not go below this line for init
+
+  // With EventListeners
+  const buyButton = document.querySelector(".buy");
+  airline.numberOfPlanes = 300;
+  airline.buyPlane = function () {
+    console.log(this);
+
+    {
+      /**
+       // this keyword is set dynamically.
+       // We want the this keyword to point to Lufthansa instead of the button elemeny
+       // we need to manually insert the this keyword. Should we use the call or the bind ??
+       // we need to pass in a function in thb event listener and not call it. Call method immediately calls the function
+       // so we use bind
+       // bind will return a new function
+       // buyButton.addEventListener("click", airline.buyPlane.bind(airline)); And now the bind method will popint to airliune or Lufthansa
+       *  
+       */
+    }
+
+    this.numberOfPlanes++;
+    console.log(this.numberOfPlanes);
+  };
+
+  buyButton.addEventListener("click", airline.buyPlane.bind(airline));
+
+  // partial APplications
+  const addTax = (rate, value) => value + value * rate;
+  console.log(addTax(0.1, 200));
+
+  const addVAT = addTax.bind(null, 0.23);
+  console.log(addVAT(200));
+
+  {
+    // if you want to preset the rate then it has to be the first argument in the function
+    // const functionThatWasReturned = function (rate, value) {
+    //   return value + value * rate;
+    // };
+    // const aFunctionThatReturnsAnotherFUnction = function (r, v) {
+    //   return functionThatWasReturned(r, v);
+    // };
+    // console.log(aFunctionThatReturnsAnotherFUnction(0.1, 200));
+  }
+
+  const addTaxRate = (value) => (rate) => value + value * rate;
+  console.log(addTaxRate(200)(0.2));
+
+  // Do not go beyond this line
 };
 
 init();
+
+// memorise the notes below
+
 /**
  *  || : Returns the first truthy value or the last one if none are truthy
  *  && : Returns the first falsy value or the last one if all are truthy
@@ -212,7 +288,7 @@ init();
  * first class functions vs higher orderfunctions
  * first class functions is just a feature that a programming language has or does nbot have
  * all this means is that a functioon behaves as a value in a programming language that treats it as a first class citizen
- *
+  *
  * higher order functions are only possible if a language supports first class functions
  *
  * why are they so much helpful
@@ -233,6 +309,22 @@ init();
  * call apply and bind
  *
  * in the call method the first argument is what we wantr the this to point ot
- * in the call method the first arguemnt is exactly what we want the this keyword to point ot
+ * in the call method the first arguemnt is exactly what we want the this keyword to point to
  *
+ * we are calling the book function, instead we are calling hte call methid which will call the call method and the call method will call the book function with the this keyword call to eurowings
+ *
+ * Just like call and apply, bind also allows us to manually set the this keyword for any function call
+ * The differnece is tha tthe bind keyword does not immediately call the function, instead it immdediately returns a funnction where the this keyword is set to what we want
+ *
+ * PArtial appliaction : Part of the argument of the original function is already applied
+ *
+ * In eventListeners the this keyword always points to the element the handler is attached to
+ *
+ * Do not use arrow funcitons as methods as they give unexpected results
+ * arrow functions with one paramenter does not need to have a parennthesis
+ * Only with two or more arguments or no arguments does it need the parenthesis
+//  * arrow functions are always functop0nm expression and cannot be function declerations
+ * 
+ * IIFE : Immediately invoked function expression 
+ * 
  */
