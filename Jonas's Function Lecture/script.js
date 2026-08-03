@@ -142,9 +142,8 @@ flightChecker(flight, passenger);
 
 
 add(7)(9)(3);
-*/ const init = function () {
-  // why do we need to set the this keyword manually
-  const airline = {
+// why do we need to set the this keyword manually
+const airline = {
     name: "Lufthansa",
     iataCode: "LH",
     bookings: [],
@@ -161,7 +160,7 @@ add(7)(9)(3);
 
   airline.book("351", "Muhtasim Rabib");
   airline.book("635", "TF Rayen");
-
+  
   const airline2 = {
     name: "Euro-Wings",
     iataCode: "EW",
@@ -174,7 +173,7 @@ add(7)(9)(3);
 
   book.call(airline, 23, "Sarah Williams");
   book.call(airline2, 23, "Shirin Akter");
-
+  
   // Apply method :
   // does the same shit as call, but it takes in an array as argument, instead of individual arguemtn
   const airline3 = {
@@ -182,34 +181,33 @@ add(7)(9)(3);
     iataCode: "SA",
     bookings: [],
   };
-
+  
   const flightData = [34, "George Cooper"];
   // book.apply(airline3, flightData);
   // console.log(airline3);
-
+  
   // but the modern way of doing this is to use the spread operator instead of using a diffrent methof
   book.call(airline3, ...flightData);
-
+  
   // BInd methid
   const bookLH = book.bind(airline);
   const bookEW = book.bind(airline2);
   const bookSA = book.bind(airline3);
   bookEW(23, "Steven Williams");
-
+  
   // Applying Book.BInd with partial applications
   const bookEW29 = book.bind(airline3, 29);
   bookEW29("Muhtasim Rabib");
   bookEW29("TF Rayen");
   // Do not go below this line for init
-
+  
   // With EventListeners
   const buyButton = document.querySelector(".buy");
   airline.numberOfPlanes = 300;
   airline.buyPlane = function () {
     console.log(this);
-
+    
     {
-      /**
        // this keyword is set dynamically.
        // We want the this keyword to point to Lufthansa instead of the button elemeny
        // we need to manually insert the this keyword. Should we use the call or the bind ??
@@ -218,22 +216,21 @@ add(7)(9)(3);
        // bind will return a new function
        // buyButton.addEventListener("click", airline.buyPlane.bind(airline)); And now the bind method will popint to airliune or Lufthansa
        *  
-       */
     }
-
+    
     this.numberOfPlanes++;
     console.log(this.numberOfPlanes);
   };
-
+  
   buyButton.addEventListener("click", airline.buyPlane.bind(airline));
-
+  
   // partial APplications
   const addTax = (rate, value) => value + value * rate;
   console.log(addTax(0.1, 200));
-
+  
   const addVAT = addTax.bind(null, 0.23);
   console.log(addVAT(200));
-
+  
   {
     // if you want to preset the rate then it has to be the first argument in the function
     // const functionThatWasReturned = function (rate, value) {
@@ -252,15 +249,37 @@ add(7)(9)(3);
   (function () {
     console.log("This function will execute only once");
   })();
-
+  
   (() => console.log("This function will also execute only once"))();
-
+  
   {
     let isPrivate = 23;
     var isnotPrivate = 24;
   }
   console.log(isPrivate);
   console.log(isnotPrivate);
+  */ const init = function () {
+  // closures
+  console.log(`Closures`);
+
+  // this is called secure booking because the passengerCount variable cannot be manipulated or accessed from the outside
+
+  const secureBooking = function () {
+    let passengerCount = 0;
+    return function () {
+      passengerCount++;
+      console.log(`${passengerCount} passengers`);
+    };
+  };
+
+  // secureBooking is a higher order function
+  const booker = secureBooking();
+
+  booker();
+  booker();
+  booker();
+
+  console.dir(booker);
 
   // Do not go beyond this line
 };
@@ -372,5 +391,11 @@ init();
  * This is why if we needed data privacy we can just create a blocked scope instead of creating a function to create a scope 
  * But if you need to execute a function only once then IIFE is still the way to go ven with modern JS 
  * 
+ * There is an almost mysticla feature of js concept that is closures - this is also the hardest thing to understand 
+ * however if you understgasnd the exevution context the scope chain and hte call stack then this thing becomes super simple ot understasnd 
+ * They bring all of these concepts togetether in a magiocal way 
+ * A closurte simplyt happens automatically and so we will simulate those situations if those things happenm 
+ * 
+ *  
  *  
  */
