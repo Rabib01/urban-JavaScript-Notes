@@ -271,12 +271,20 @@ init();
 
 /**
  *  || : Returns the first truthy value or the last one if none are truthy
+ * 
  *  && : Returns the first falsy value or the last one if all are truthy
+ * 
  *  This "price = 199 * numPassengers," would only work if numPassengers was defined before "
+ * 
  *  A ?? B ?? C ?? D : nullish coalescent : for null and undefined
+ * 
  *  If a value is not null or undefined, it returns that value immediately,
+ * 
  *  if a value is null or undefined it moves to the next value,
+ * 
  *  If all are null or undefined it returns a last value
+ * 
+ * 
  * for flightChecker : the output : changes for the flightNum but not for the object :
  * This is beacuse flightNum is a different variable that was created as
  * flightNum contains a copy of the flight but not the origignal flight variable
