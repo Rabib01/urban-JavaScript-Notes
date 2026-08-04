@@ -258,12 +258,11 @@ const airline = {
   }
   console.log(isPrivate);
   console.log(isnotPrivate);
-  */ const init = function () {
   // closures
   console.log(`Closures`);
-
+  
   // this is called secure booking because the passengerCount variable cannot be manipulated or accessed from the outside
-
+  
   const secureBooking = function () {
     let passengerCount = 0;
     return function () {
@@ -271,15 +270,68 @@ const airline = {
       console.log(`${passengerCount} passengers`);
     };
   };
-
+  
   // secureBooking is a higher order function
   const booker = secureBooking();
-
+  
   booker();
   booker();
   booker();
-
+  
   console.dir(booker);
+  
+  */ const init = function () {
+  // some further closure examnple s
+  let f;
+  const g = function () {
+    const a = 23;
+    f = function () {
+      console.log(a * 2);
+    };
+  };
+
+  // g();
+  // f();
+
+  const h = function () {
+    const b = 777;
+    f = function () {
+      console.log(b * 2);
+    };
+  };
+
+  g();
+  f();
+
+  console.dir(f);
+
+  h();
+  f();
+
+  // f here is a differnet function fromn thje f in line 304. The f here is reassigned in hThs
+
+  // seeing hte closure of f :
+  console.dir(f);
+
+  // second example of closure. An example wiuth timer/. A timer is also a great example that we dont need to retunr a function in order tos see a closure in action n
+
+  const boardPassengers = function (numPass, wait) {
+    const perGroup = numPass / 3;
+
+    // parameters : function that will be executed , second parameter - time in ms
+    setTimeout(() => {
+      console.log(`We are now boarding all ${numPass}
+        passengers`);
+      console.log(`There aer three groups, each with ${perGroup}
+        passengers`);
+    }, wait * 1000);
+
+    console.log(`Will start boarding in ${wait}
+      second s`);
+  };
+
+  const perGroup = 1000;
+  boardPassengers(180, 3);
 
   // Do not go beyond this line
 };
