@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .local-storage-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+      #text-field {
+        width: 305px;
+        outline: 2px solid green;
+      }
+      .hidden {
+        display: none;
+        /* font-family:
+        "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serifS;*/
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="local-storage-container">
+      <h1>Without Local Storage</h1>
+      <input type="text" name="" id="text-field" placeholder="Type Text Here" />
+      <h2 class="hidden">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, deserunt.
+      </h2>
+    </div>
+
+    <script>
+      const randomText = document.querySelector(".hidden");
+      const inputField = document.querySelector("#text-field");
+      document.body.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          randomText.classList.remove("hidden");
+          randomText.innerHTML = inputField.value;
+          randomText.style.fontFamily = "Helvetica";
+        }
+      });
+    </script>
+  </body>
+</html>
