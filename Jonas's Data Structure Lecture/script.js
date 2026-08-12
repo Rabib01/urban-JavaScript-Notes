@@ -69,7 +69,7 @@ console.log(properties);
 /**
  * Object.jeys do not recursively search through the entire object
  * IT looks at one level deep to the object that oyu give it
- *
+ * keys are the property names. Values are the values stored to those properties
  */
 
 let openString = `We are open for ${properties.length} days: `;
@@ -79,4 +79,10 @@ for (const day of Object.keys(openingHours)) {
 }
 console.log(openString);
 
-// Pro
+// Property values
+const values = Object.values(openingHours);
+console.log(values);
+
+// Loop through the entire object we need entries - tbc : 5:12 of 10:09
+const entries = Object.entries(openingHours);
+console.log(entries);
