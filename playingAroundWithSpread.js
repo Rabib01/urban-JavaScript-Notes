@@ -1,9 +1,3 @@
-/**
- * https://exercism.org/tracks/javascript/exercises/train-driver
- * Some exercises to practise spread and rest. The questions and answers must be solved using using spreasd and rest only
- * Been awake the entire night studying, dont feel like writing creating nerw arrays for the operations
- */
-
 const getListOfWagons = function (...arguments) {
   return arguments;
 };
