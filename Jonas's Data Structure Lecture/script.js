@@ -280,3 +280,87 @@ console.log(uniqueItalianAndMexican);
    * isDisjointFrom
    */
 }
+
+console.log("");
+console.log("");
+
+const arra1 = [1, 2, 3];
+const arra2 = [4, 5, 6, 7, 1, 2, 3];
+const commonElementsBetweenTheseArrays = [
+  ...new Set(arra1).intersection(new Set(arra2)),
+];
+console.log(commonElementsBetweenTheseArrays);
+console.log("");
+console.log("");
+
+// Maps start from here
+{
+  /**
+   * Maps are a lot more useful then sets
+   * Data Structure that we use to map vvalues to keys
+   * In objects the keys are always strings
+   * In maps the keys can be anything
+   * Keys can be objects or arrays or other maps
+   * Easiest way to create a map is to create an empty map
+   */
+}
+
+const restMap = new Map();
+restMap.set("name", "Classico Italiano");
+restMap.set(1, "Firenze, Italy");
+restMap.set(2, "Lisbon, Protugal"); // This also returns the map with adding new elements to the map -> So we can do this below
+restMap
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(false, "We are closed :( ")
+  .set(true, "We are opened :D ");
+
+// we return elements from the map using hte get method - Here the data type matters if we trued "true" or "1" it will return undefined
+console.log(restMap.get("name"));
+console.log(restMap.get(true));
+console.log(`This will give undefined: ${restMap.get("true")}`);
+
+// this is clever but it is not readable -> Do not overuse this pattern
+const currentTime = 20;
+const currentTime2 = 8;
+console.log(
+  restMap.get(
+    currentTime > restMap.get("open") && currentTime < restMap.get("close"),
+  ),
+);
+console.log("");
+console.log(
+  restMap.get(
+    currentTime2 > restMap.get("open") && currentTime2 < restMap.get("close"),
+  ),
+);
+
+// we have a plethora of methods for the maps as well
+console.log(restMap.has("categories"));
+
+// owner decided to close the first location in France
+console.log(restMap.delete(1));
+console.log(restMap);
+
+// objects also hve the delete properties but it is not recommended that we do that operation as it is slow. // they also have the size properties
+console.log(restMap.size);
+console.log("");
+console.log("");
+
+// objects and arrays and other reference variables are kept in the heap and so this will not work:
+restMap.set([1, 2], "test");
+console.log(restMap);
+console.log(`This will aslo give us undefined : ${restMap.get([1, 2])}`);
+
+// In order for us to make this work, they both need to be the same array and not same arrays in different memory locations in the heap. This will work
+const arr = [1, 2, 3];
+restMap.set(arr, "test");
+console.log(restMap.get(arr));
+
+// we can also select DOM elements and put them as keys in maps -> Will provide useful later
+restMap.set(
+  document.querySelector("h1"),
+  document.querySelector("h1").innerText,
+);
+console.log(restMap);
