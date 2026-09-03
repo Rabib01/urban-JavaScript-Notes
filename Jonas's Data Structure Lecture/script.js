@@ -4,23 +4,25 @@
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
+{
+  const italianFoods = new Set([
+    "pasta",
+    "gnocchi",
+    "tomatoes",
+    "olive oil",
+    "garlic",
+    "basil",
+  ]);
 
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
+  const mexicanFoods = new Set([
+    "tortillas",
+    "beans",
+    "rice",
+    "tomatoes",
+    "avocado",
+    "garlic",
+  ]);
+}
 
 // Data needed for first part of the section
 const restaurant = {
@@ -208,3 +210,73 @@ const uniqueLettersOfName = new Set("Muhtasim Rabib").size;
 console.log(uniqueLettersOfName);
 
 // Guess I only have 11 unique letters in my name :( out of 26
+
+const italianFoods = new Set([
+  "pasta",
+  "gnocchi",
+  "tomatoes",
+  "olive oil",
+  "garlic",
+  "basil",
+]);
+
+const mexicanFoods = new Set([
+  "tortillas",
+  "beans",
+  "rice",
+  "tomatoes",
+  "avocado",
+  "garlic",
+]);
+
+{
+  // sets are iterables
+  // objects are not iterables
+  // we can easily find the common parts between arrays
+  // we can also find converts sets and arrays between themselves easilyu
+}
+
+// finding the common ingredients that are present in both italianFoods nad mexicanFoods - we use a fucking useful method known as the intersection method - most useful when we want to find the common elements between two arrays
+// finding common parts between arrays -> convert them to sets -> find their intersection -> Spread them into a new array
+const commonFoods = italianFoods.intersection(mexicanFoods);
+console.log(commonFoods);
+console.log([...commonFoods]);
+console.log("");
+console.log("");
+
+// we also have a union method to find all of things of an array minus the duplicates -> However these were introduced in es2025 and so only the latese version of the browsers will support this
+const allFoods = [...italianFoods.union(mexicanFoods)];
+console.log(allFoods);
+console.log("");
+{
+  // (sets are automatically converted in this casxe as italianFoods and mexicanFoods are already arrays)
+  // another way of ding the same thing iws to -> merge two arrays together -> covert them to a new set to remove duplicates -> spread the entire thing so that the set turns to an array
+  // we can also create a function for this if we had to do this thing over and over again
+}
+const wierdWayOfDoingTheSameTing = [
+  ...new Set([...italianFoods, ...mexicanFoods]),
+];
+console.log(wierdWayOfDoingTheSameTing);
+
+{
+  // venn diagrams would have been so much cool here
+  // we can also create a unique set from all of these, things that are present in one set only and does not intersect the other set
+}
+console.log("");
+const uniqueItalianFoods = [...italianFoods.difference(mexicanFoods)];
+console.log(uniqueItalianFoods);
+console.log("");
+console.log("");
+
+const uniqueItalianAndMexican = [
+  ...italianFoods.symmetricDifference(mexicanFoods),
+];
+console.log(uniqueItalianAndMexican);
+
+{
+  /**
+   * there are also is subSet of
+   * isSuperOf
+   * isDisjointFrom
+   */
+}
