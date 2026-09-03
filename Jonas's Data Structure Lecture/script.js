@@ -103,5 +103,108 @@ console.log("");
 for (const [key, { open, close }] of entries) {
   console.log(`On ${key} we are open from ${open} and close at ${close} `);
 }
+console.log("");
+console.log("");
 
 // Sets - Collection of unique values - cannot have duplicates
+{
+  /**
+   * Sets do not have indexes - No way of getting values out of sets
+   * All values are unique and order does not matter then we dont need to retrieve anuthing
+   * we just need to know whether the value exists in the set or not
+   * sets are iterables and we can loop over them when we want to
+   */
+}
+
+const orderSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Burger",
+  "Pasta",
+  "Pasta",
+  "French Fries",
+  "cold-drinks",
+  "Pasta",
+  "Pasta",
+  "Meat-Box",
+]);
+
+console.log(orderSet);
+console.log("");
+console.log("");
+
+// we can add things to a new set - However they will be added only once
+orderSet.add("Thai Soup");
+orderSet.add("Chicken Fries");
+console.log(orderSet);
+console.log("");
+console.log("");
+
+// we can DELETE things from the set
+orderSet.delete("cold-drinks");
+console.log(orderSet);
+
+// we cannot ACCESS these values based on indexes- below outputs to undefined
+console.log(orderSet[0]);
+console.log("");
+console.log("");
+
+// we can see whether a set HAS a particular value - similar to the array has method
+console.log(orderSet.has("Pasta"));
+
+// we can CLEAR the entire set and remove all of its elements to give an empty set
+// orderSet.clear();
+console.log(orderSet);
+console.log("");
+console.log("");
+
+// we can also do this - However the b at the end will not be registered
+const name = new Set("Rabib");
+console.log(name);
+console.log("");
+console.log("");
+
+// we can also create an empty set - will give Set(0) {size:0}
+const emptySet = new Set();
+console.log(emptySet);
+
+// we can also know the size of the empty set - kind of like an array lenght
+const setSize = orderSet.size;
+console.log(setSize);
+console.log("");
+console.log("");
+
+// sets are iterables and we can also loop through these iterables
+for (const order of orderSet) {
+  console.log(order);
+  console.log("");
+}
+console.log("");
+console.log("");
+
+// main use-case for sets is to remove duplicate values in arrays in normal code bases
+const restaurantStaff = [
+  "Big Boss",
+  "Waiter",
+  "Manager",
+  "Waiter",
+  "Bartender",
+  "Cleaner",
+  "Sous-Chef",
+  "Piaz-Roshun Cutter",
+];
+
+// spread operator works on all iterables - arrays that includes sets as well
+const uniqueStaffsPresent = [...new Set(restaurantStaff)];
+console.log(uniqueStaffsPresent);
+// const numberOfUniquePositionsInTheResturant = uniqueStaffsPresent.size; This is now an array ans so it wont work
+const numberOfUniquePositionsInTheResturant = new Set(restaurantStaff).size;
+console.log(numberOfUniquePositionsInTheResturant);
+console.log("");
+console.log("");
+
+// we can also use sets to find the number of uniue letters in any given string
+const uniqueLettersOfName = new Set("Muhtasim Rabib").size;
+console.log(uniqueLettersOfName);
+
+// Guess I only have 11 unique letters in my name :( out of 26
