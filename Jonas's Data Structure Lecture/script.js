@@ -151,11 +151,22 @@ console.log(orderSet[0]);
 console.log("");
 console.log("");
 
+{
+  /**
+   * We do not retrieve values from a set because the order does not matter
+   * We can checkj whether the values exist using set.has("value")
+   * we can check all of the values using set.values()
+   * or turn the set into an array using [..set] and do all sorts of funky things with it
+   */
+}
+
 // we can see whether a set HAS a particular value - similar to the array has method
 console.log(orderSet.has("Pasta"));
 
 // we can CLEAR the entire set and remove all of its elements to give an empty set
-// orderSet.clear();
+
+// orderSet.clear(); -> this clears the set to make it into an empty set
+
 console.log(orderSet);
 console.log("");
 console.log("");
@@ -230,7 +241,7 @@ const mexicanFoods = new Set([
 ]);
 
 {
-  // sets are iterables
+  // sets are iterables               S E T S               S T A R T S               H E R E
   // objects are not iterables
   // we can easily find the common parts between arrays
   // we can also find converts sets and arrays between themselves easilyu
@@ -250,7 +261,7 @@ console.log(allFoods);
 console.log("");
 {
   // (sets are automatically converted in this casxe as italianFoods and mexicanFoods are already arrays)
-  // another way of ding the same thing iws to -> merge two arrays together -> covert them to a new set to remove duplicates -> spread the entire thing so that the set turns to an array
+  // another way of ding the same thing iws to -> spread to create arrays from Sets -> merge two arrays using spread syntax TOGETHER -> covert them to a new set to remove duplicates -> spread the entire thing so that the set turns to an array
   // we can also create a function for this if we had to do this thing over and over again
 }
 const wierdWayOfDoingTheSameTing = [
@@ -262,11 +273,19 @@ console.log(wierdWayOfDoingTheSameTing);
   // venn diagrams would have been so much cool here
   // we can also create a unique set from all of these, things that are present in one set only and does not intersect the other set
 }
+
 console.log("");
 const uniqueItalianFoods = [...italianFoods.difference(mexicanFoods)];
 console.log(uniqueItalianFoods);
 console.log("");
 console.log("");
+
+{
+  /**
+   * This that are both present in A and B only but does not intersect
+   * This is known as symmetric difference
+   */
+}
 
 const uniqueItalianAndMexican = [
   ...italianFoods.symmetricDifference(mexicanFoods),
@@ -294,8 +313,9 @@ console.log("");
 console.log("");
 
 // Maps start from here
+
 {
-  /**
+  /**                                                                      M A P S               S T A R T S               H E R E
    * Maps are a lot more useful then sets
    * Data Structure that we use to map vvalues to keys
    * In objects the keys are always strings
@@ -308,7 +328,8 @@ console.log("");
 const restMap = new Map();
 restMap.set("name", "Classico Italiano");
 restMap.set(1, "Firenze, Italy");
-restMap.set(2, "Lisbon, Protugal"); // This also returns the map with adding new elements to the map -> So we can do this below
+restMap.set(2, "Lisbon, Protugal"); // This also returns the map with adding new elements to the map -> So we can do this console.log(restMap.set(2, "Lisbon, Portugal"));
+
 restMap
   .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
   .set("open", 11)
@@ -316,12 +337,19 @@ restMap
   .set(false, "We are closed :( ")
   .set(true, "We are opened :D ");
 
-// we return elements from the map using hte get method - Here the data type matters if we trued "true" or "1" it will return undefined
+// we return elements from the map using hte get method - Here the data type matters if we trued "true" or "1" it will return undefined -> this is similar to set.has()
 console.log(restMap.get("name"));
 console.log(restMap.get(true));
 console.log(`This will give undefined: ${restMap.get("true")}`);
 
 // this is clever but it is not readable -> Do not overuse this pattern
+
+{
+  /**
+   * maps to true which gives we are opened
+   */
+}
+
 const currentTime = 20;
 const currentTime2 = 8;
 console.log(
@@ -348,7 +376,7 @@ console.log(restMap.size);
 console.log("");
 console.log("");
 
-// objects and arrays and other reference variables are kept in the heap and so this will not work:
+// objects and arrays and other reference variables are kept ar different places in the heap and so this will not work:
 restMap.set([1, 2], "test");
 console.log(restMap);
 console.log(`This will aslo give us undefined : ${restMap.get([1, 2])}`);
@@ -364,3 +392,95 @@ restMap.set(
   document.querySelector("h1").innerText,
 );
 console.log(restMap);
+
+/**
+ * A different way to create the values of a map without having to use the maps.set() method
+ */
+
+console.log("");
+console.log("");
+
+const question = new Map([
+  ["question", "What is the best programming language in the world ?"],
+  [1, "C"],
+  [2, "C++"],
+  [3, "C#"],
+  [4, "JavaScript"],
+  [5, "Java"],
+  ["Correct Answer", 4],
+]);
+
+console.log(question.get("question"));
+console.log(`The Correct Answer is ${question.get("Correct Answer")}`);
+console.log("");
+console.log("");
+
+// we cn also retrieve the entries whose keys are values to only look know the options
+for (const [key, value] of question) {
+  if (typeof key === "number") {
+    console.log(`The option number ${key} is ${value}`);
+  }
+}
+
+console.log("");
+console.log("");
+
+console.log(Object.entries(openingHours));
+
+{
+  /** Output -> 
+0:(2) ['thu', {…}]
+1:(2) ['fri', {…}]
+2:(2) ['sat', {…}] 
+   */
+}
+
+// converting object to maps
+console.log("");
+console.log("");
+
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+{
+  /** output of hte previous line
+0: {"thu" => Object}
+1:{"fri" => Object}
+2: {"sat" => Object}
+   */
+}
+
+function freshFromDocumentation() {
+  {
+    // fresh from the documentation  : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+    const obj = { foo: "bar", baz: 42 };
+    console.log(Object.entries(obj)); // [ ['foo', 'bar'], ['baz', 42] ]
+
+    const arrayLike = { 0: "a", 1: "b", 2: "c" };
+    console.log(Object.entries(arrayLike)); // [ ['0', 'a'], ['1', 'b'], ['2', 'c'] ]
+
+    const randomKeyOrder = { 100: "a", 2: "b", 7: "c" };
+    console.log(Object.entries(randomKeyOrder)); // [ ['2', 'b'], ['7', 'c'], ['100', 'a'] ]
+  }
+}
+{
+  //   const yourAnswer = +prompt(
+  //     `please give me an answer for the question : \n ${question.get("question")}`,
+  //   );
+}
+const yourAnswer = 4;
+
+document.querySelector("h1").innerText =
+  yourAnswer === question.get("Correct Answer")
+    ? `You've got the correct answer ${question.get(4)}`
+    : `Your answer is incorrect, fuck U bitch! `;
+
+// convert map to arrays
+console.log(...question);
+console.log(question.entries());
+console.log(question.keys());
+console.log(question.values());
+console.log("");
+console.log("");
+
+console.log(...question.keys());
+console.log(...question.values());
