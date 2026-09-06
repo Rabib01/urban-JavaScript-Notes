@@ -540,3 +540,59 @@ console.log(...question.values());
    *
    */
 }
+
+{
+  /**                                                      S T R I N G S               S T A R T S               H E R E
+   */
+}
+
+const airlines = "TAP Air Protugal";
+const plane = "A320";
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log("B727"[2]);
+
+console.log(plane.length);
+console.log(airlines.indexOf("r"));
+console.log(airlines.lastIndexOf("r"));
+console.log(airlines.lastIndexOf("portugal"));
+
+// we can extract parts of a string - parts of a string is called sub string - we need to store it first in a variable or data structure
+console.log(airlines.slice(4));
+console.log(airlines.slice(4, 7)); // end value is not included in the string end - beginning = length pf the sub string
+
+// we can extract the first word without hard coding hte data
+console.log("");
+console.log(airlines.slice(0, airlines.indexOf(" ")));
+console.log(airlines.slice(airlines.lastIndexOf(" ") + 1, airlines.length));
+
+// extract the middle seat
+function checkMiddleSeat(seat) {
+  // B and E are the middle seats - we need to check whether the last character is a B or an E ? ?
+  if (seat.slice(-1) === "B" || seat.slice(-1) === "E") {
+    return `This is a middle seat, which is the one noone fucking wants`;
+  } else {
+    return `Dont fucking know which seat this is `;
+  }
+}
+
+console.log(checkMiddleSeat("11B"));
+console.log(checkMiddleSeat("23C"));
+console.log(checkMiddleSeat("15E"));
+
+/**
+ * strings are primitives - strings have methods because JS is smart and will convert that string to a string object with the same content - string boxing
+ * this happens wehn we call a method on a string
+ * This is what happens
+ */
+
+// string boxing - tons of methods are present in String's prototypes
+console.log(new String("Rabib"));
+const rabib = new String("Rabib");
+console.log(typeof rabib); // this gives us an object
+
+console.log("");
+console.log("");
+const rabibSlice = new String("Rabib").slice(1);
+console.log(typeof rabibSlice); // this result is a string
