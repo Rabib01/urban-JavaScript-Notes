@@ -484,3 +484,59 @@ console.log("");
 
 console.log(...question.keys());
 console.log(...question.values());
+
+{
+  /**
+   * When to use data
+   * We mainly have to work with data
+   *
+   * Where can data come from -
+   * - From the program itself (written directly in hte siurce code : error and status messages)
+   * - From the UI - user data or the data written on DOM (tasks in toDo)
+   * - From external sources - Data fetched from web API or otherapplication sources
+   *
+   * We have collections of data - usually comes in collection - therefore we need to store that data
+   * so we have arrays and sets
+   * simple list can be stored in arrays and sets
+   * key/value pairs need to be stored in objects or  maps
+   *
+   * data from web API is one of the most common sources of data for us to work with and this usually comes in the form of JSON
+   * each object is a value
+   *
+   * each recipe object can be seen as a value
+   * do we wnat to describe each of the bjects ? not neceesasary - we already know that they are recipes
+   * all info of each recipe is stored in each of the objects
+   * a simple list where all of the recipes are stored together - therefore we need an array - array of objects are very common in JS
+   * most important for use
+   *
+   * there are weak sets and weak maps in JS that are built in
+   * other data structures include - trees, hashTables, hashMaps, linked Lists, queues, stacks etc - dont really matter for us
+   *
+   * When to use them ?
+   * Arrays and Sets - Simple list of values when we do not need to describe the values
+   * Arrays -
+   *   - Arrays - when we need ordered data but are ok with having duplicates
+   *   - also when we need to manipulate data
+   * Ses
+   *   - when we are working with unique values
+   *   - when high performance is necessary - delete and searching can be 10 times faster
+   *   - when we are dealing with duplicates
+   *
+   * Objects and Maps - WHen we are working with key value pairs
+   * Objects
+   *   - has been more traditional - key/value stored
+   *   - Easier to write and store values with . and []
+   *   - USE when we need to include functions
+   *   - USe when working with data
+   * Maps
+   *   - Better performance
+   *   - Can have any data tupes
+   *   - easier to store and iterate
+   *   - Easy to compute size
+   *   - USe when you simly need to map keys to values
+   *   - USe when you need keus that are not strings
+   *   - does not have the this keyword
+   *
+   *
+   */
+}
