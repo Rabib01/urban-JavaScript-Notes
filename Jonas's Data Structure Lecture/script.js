@@ -598,3 +598,107 @@ const rabibSlice = new String("Rabib").slice(1);
 console.log(typeof rabibSlice); // this result is a string
 
 // last few of string exercises
+console.log("muhtasim".toUpperCase());
+const passenger = "muhTaSim"; // should look lie this Muhtasim
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+const email = "hello@muhtasim.io";
+const loginEmail = " Hello@Muhtasim.Io   \n";
+const lowerEmailWhichIsAlsoTrimmed = loginEmail.toLocaleLowerCase().trim();
+console.log(lowerEmailWhichIsAlsoTrimmed);
+console.log(lowerEmailWhichIsAlsoTrimmed === email);
+
+// we also have trim start and trim end which we can trim white psaces at the end of the strings nly
+
+//replace - only replaces the first occurence
+const priceGB = "288,97£";
+const priceUS = priceGB.replace("£", "$").replace(",", ".");
+console.log(priceUS);
+
+//replaceAll - replaces all occurences
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23!";
+console.log(announcement.replace("door", "gate"));
+console.log(announcement.replace(/door/g, "gate")); //regular expressin
+console.log(announcement.replaceAll("door", "gate"));
+
+const planea = "Airbus a320neo";
+console.log(planea.includes("a320"));
+console.log(planea.includes("boeing"));
+console.log(planea.startsWith("Airbus"));
+console.log(planea.startsWith("Aib"));
+console.log(planea.startsWith("Airb"));
+
+if (planea.startsWith("Airbus") && planea.endsWith("neo"))
+  console.log("Part of the new airbs family ");
+
+// practise exercise
+
+const checkBaggage = function (items) {
+  //
+  const bagage = items.toLowerCase();
+  if (bagage.includes("knife") || bagage.includes("gun"))
+    console.log("you are not allowed");
+  else console.log("Welcome aboard!");
+};
+
+checkBaggage("I have a laptop, some food and a pocket knife ");
+checkBaggage("Socks and Camera");
+checkBaggage("Got some snacks and a gun for protection");
+
+// last lecture with working with strings
+console.log("a+very+nice+string".split("+"));
+const [firstName, lastName] = "muhtasim rabib".split(" ");
+console.log(firstName, lastName);
+const newName = [
+  "Mr.",
+  firstName[0].toUpperCase() + firstName.slice(1),
+  lastName[0].toLocaleUpperCase() + lastName.slice(1),
+].join(" ");
+console.log(newName);
+
+// the classic capitalize
+function capitalizeName(string) {
+  return string
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+console.log(capitalizeName("jessica ann smith davis"));
+console.log(capitalizeName("muhtasim rabib"));
+console.log(capitalizeName("touhid fateh ali rayen"));
+
+// padding
+const message = "go to gate 23 ";
+console.log(message.padStart(23, "+"));
+console.log("muhtasim".padStart(23, "+"));
+console.log(message.padEnd(30, "30"));
+// the first argument does not mean add = for 23 times at the begining, it means that the resulty of the ouput string should be 23 in length total
+
+function maskedCreditCardNumber(number) {
+  // this will do typecoercison to convert the number to  a string
+  const str = number + "";
+  const last4Digits = str.slice(-4);
+  return last4Digits.padStart(str.length, "*");
+}
+
+//reaql world application
+console.log(maskedCreditCardNumber(221231234532453456));
+console.log(maskedCreditCardNumber("2211231234353242453456"));
+
+//repeat - allows us to repeat the same message multiple times
+const message2 = "bad weather.. all departures delayed \n";
+console.log(message2.repeat(3));
+
+function planesInLine(n) {
+  console.log(`there are ${n} plnes in line ${"✈️".repeat(n)}`);
+}
+planesInLine(5);
+planesInLine(12);
+planesInLine(7);
+planesInLine(9);
