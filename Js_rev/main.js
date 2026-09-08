@@ -77,7 +77,40 @@ console.log(a, b);
    * array methods
    * can sjupt this part - practising these basic problems a lot
    * will be practising leet code from now on
+   *
+   * find niye confused chilam
+   * now skip tje rest
+   * fimd retirns the first ele,emt wjose condition results in true
+   * .filter(), .slice()
+   * .slice(startIndex, endIndex)
+   * .splice(indexNumber, noOfItemsToRemove, "replacedItem") -> returbs the removed element
+   * array.push() -> returns lenth
+   * array.concat()
+   * array.map() -> prottekta element e kono operation kora
+   * array.reduce(acc, curr => {}, initialValue) -> somporno array k reduce kore ekta value ana then we use array.reduce()
+   * array.forEach() - simple for loop for each array
+   *
+   * for of loop and for In loop
+   * for of video - for all iterables - object is not an iterable
+   * for iterables order is important bit for object key vaie pairs are important
+   * arrays, string, sets these are iterables
+   *
+   * for im loop = ised fpr pnkects
+   *
+   * console.log(Object.keys{});
+   * console.log(Object.valies{});
+   * console.log(Object.emtires{});
+   *
+   * perfect array copy korar jonno spread use kora labbe
+   *
+   * array of pnkect er jonno pnly the forst layter wil get copied, deeply nested refrecne pnecty will bejhave woerdly
+   *f
    */
 }
 
 const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango", "Bedana"];
+const found = fruits.find((fruit) => fruit === "Orange");
+console.log(found);
+console.log("");
+console.log("");
+console.log(fruits);
