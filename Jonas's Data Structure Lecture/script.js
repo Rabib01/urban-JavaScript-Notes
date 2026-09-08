@@ -596,3 +596,5 @@ console.log("");
 console.log("");
 const rabibSlice = new String("Rabib").slice(1);
 console.log(typeof rabibSlice); // this result is a string
+
+// last few of string exercises
