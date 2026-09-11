@@ -702,3 +702,35 @@ planesInLine(5);
 planesInLine(12);
 planesInLine(7);
 planesInLine(9);
+
+const flightsAlpha =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+
+function processingFlights(string) {
+  const splittedString = string.split("+");
+  console.log(splittedString);
+  console.log("");
+  console.log("");
+
+  splittedString.map((substring) => {
+    if (substring.includes("Delayed")) {
+      // console.log(substring);
+      // console.log(substring.split(";"));
+      const stringConstructed = substring
+        .split(";")
+        .map((subSubString, idx, arr) => {
+          subSubString =
+            `Delayed Depature` +
+            ` from` +
+            ` ${arr[1].slice(0, 3).toUpperCase()}` +
+            ` to` +
+            ` ${arr[2].slice(0, 3).toUpperCase()}` +
+            ` (${arr[3].replace(":", "h")})`;
+        })
+        .join("\n");
+      console.log(stringConstructed);
+    }
+  });
+}
+
+processingFlights(flightsAlpha);
